@@ -1,0 +1,32 @@
+{
+    "name": "larakit/lk-verstak",
+    "description": "[Larakit] ВЕРСТАК - рабочий стол верстальщика",
+    "version": "5.0.0",
+    "keywords": [
+        "laravel",
+        "laravel 5",
+        "larakit"
+    ],	
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexey Berdnikov",
+            "email": "aberdnikov@gmail.com"
+        }
+    ],
+    "require": {
+        "snoopy/snoopy": "*",
+        "fzaninotto/faker": "*",
+        "alchemy/zippy": "^0.3.5",
+        "larakit/lk": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Larakit\\Verstak\\": "src/Verstak"
+        },
+        "files": [
+            "src/init.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}

@@ -21,8 +21,6 @@ Larakit\Boot::register_boot(__DIR__ . '/boot');
 \Larakit\Twig::register_function('verstak_url', function ($page_name) {
     $url = '/verstak/frame-page-' . $page_name . '?theme=' . Request::input('theme') . '&breakpoint=' . Request::input('breakpoint');
     
-    return HtmlA::setHref('#');//->setAttribute('data-page', $page_name)->addClass('js-iframe')->setContent($anchor);
+    return HtmlA::setHref($url);
 });
 \Larakit\Boot::register_view_path(__DIR__ . '/views', 'lk-verstak');
-
-\Larakit\Boot::register_view_path()

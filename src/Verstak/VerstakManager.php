@@ -36,6 +36,9 @@ class VerstakManager {
     static function registerBlock() {
         $dir = public_path(self::$prefix . '/blocks');
         $dir = str_replace('\\', '/', $dir);
+        if(!file_exists($dir)) {
+            mkdir($dir, 0777, true);
+        }
         foreach(\File::directories($dir) as $directory) {
             $directory      = str_replace('\\', '/', $directory);
             $directory      = str_replace($dir . '/', '', $directory);
@@ -46,6 +49,9 @@ class VerstakManager {
     static function registerPages() {
         $dir = public_path(self::$prefix . '/pages');
         $dir = str_replace('\\', '/', $dir);
+        if(!file_exists($dir)) {
+            mkdir($dir, 0777, true);
+        }
         foreach(\File::allFiles($dir) as $file) {
             if('twig' == $file->getExtension() && 'file' == $file->getType()) {
                 $page          = $file->getBasename();
@@ -59,6 +65,9 @@ class VerstakManager {
         $dir            = public_path(self::$prefix . '/themes');
         $dir            = str_replace('\\', '/', $dir);
         self::$themes[] = 'default';
+        if(!file_exists($dir)) {
+            mkdir($dir, 0777, true);
+        }
         foreach(\File::allFiles($dir) as $file) {
             if('css' == $file->getExtension() && 'file' == $file->getType()) {
                 $page           = $file->getBasename();

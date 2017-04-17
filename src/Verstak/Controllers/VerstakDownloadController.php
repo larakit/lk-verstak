@@ -67,10 +67,12 @@ class VerstakDownloadController extends Controller {
         $content = file_get_contents($url);
         $content = str_replace('href="//', 'href="http://', $content);
         $content = str_replace('src="//', 'src="http://', $content);
-        $content = str_replace('href="/!', 'href="!', $content);
-        $content = str_replace('src="/!', 'src="!', $content);
-        $content = str_replace('href="/packages', 'href="packages', $content);
+        $content = str_replace('href="/!', 'href="./!', $content);
+        $content = str_replace('src="/!', 'src="./!', $content);
+        $content = str_replace('<base href="/" />', '', $content);
+        $content = str_replace('href="/packages', 'href="./packages', $content);
         $content = str_replace('src="/packages', 'src="packages', $content);
+        $content = str_replace('?' . config('larakit.lk-staticfiles.version'), '', $content);
         
         return $content;
     }

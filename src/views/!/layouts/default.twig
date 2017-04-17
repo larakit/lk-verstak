@@ -1,0 +1,92 @@
+{% raw %}
+    <div class="verstak__header" ng-class="{'verstak__header--hidden':!is_show}" ng-cloak>
+        <div class="verstak__logo">Верстак</div>
+        <div class="verstak__tab-list">
+            <li class="verstak__tab">
+            <span class="verstak__tab-title">
+                <i class="fa" ng-class="{'fa-file':'page'==element.type, 'fa-puzzle-piece':'block'==element.type}"></i>
+                {{ element.name ? element.name : 'выберите элемент' }}</span>
+
+                <div class="verstak__tab-content">
+                    <ul class="verstak__list">
+                        <strong class="verstak__list-title">Страницы</strong>
+                        <li class="verstak__list-item" ng-repeat="p in pages"
+                            ng-click="setElement(p,'page')">
+                        <span
+                                ng-class="{'verstak__link--active': ('page'==element.type && p==element.name)}"
+                                class="verstak__link">{{ p }}</span>
+                        </li>
+                    </ul>
+                    <ul class="verstak__list">
+                        <strong class="verstak__list-title">Блоки</strong>
+                        <li class="verstak__list-item" ng-repeat="b in blocks"
+                            ng-click="setElement(b,'block')">
+                        <span
+                                ng-class="{'verstak__link--active': ('block'==element.type && b==element.name)}"
+                                class="verstak__link">{{ b }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="verstak__tab" ng-show="themes.length>0">
+            <span class="verstak__tab-title">
+                <i class="fa fa-paint-brush"></i>
+                   {{ theme }}</span>
+
+                <div class="verstak__tab-content">
+                    <ul class="verstak__list">
+                        <strong class="verstak__list-title">Темы оформления</strong>
+                        <li class="verstak__list-item"
+                            ng-repeat="t in themes"
+                            ng-click="setTheme(t)">
+                        <span
+                                ng-class="{'verstak__link--active':theme==t}"
+                                class="verstak__link">{{ t }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+            <li class="verstak__tab" ng-show="breakpoints.length && element.name">
+            <span class="verstak__tab-title">
+                <input type="number" step="10" max="2000"
+                       class="verstak__breakpoint"
+                       ng-model="breakpoint">px
+            </span>
+                <div class="verstak__tab-content">
+                    <ul class="verstak__list">
+                        <strong class="verstak__list-title">Разрешения экрана</strong>
+                        <li class="verstak__list-item" ng-repeat="v in breakpoints"
+                            ng-click="setBreakpoint(v)">
+                            <span
+                                    ng-class="{'verstak__link--active':v==breakpoint}"
+                                    class="verstak__link">{{ getBreakpointTitle(v) }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            </ul>
+        </div>
+        <div class="verstak__toggler" ng-click="is_show=!is_show">{{ is_show ? '&#8679;' : '&#8681;' }}</div>
+        <div class="verstak__download">
+            <a target="_blank" href="/verstak/download" class="verstak__button">Скачать</a>
+        </div>
+    </div>
+
+    <div class="verstak-frame"
+         ng-show="element.name"
+         ng-style="getFrameStyle()"
+    >
+        <iframe ng-src="{{ frame_url }}"
+                name="site"
+                frameborder="0"></iframe>
+    </div>
+    <div class="verstak-start" ng-show="!element.name">
+        <div class="verstak-start__title">&laquo;ВЕРСТАК&raquo;
+            <span> рабочий стол верстальщика</span>
+        </div>
+        <a href="https://github.com/larakit/lk-verstak" class="verstak-start__more">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+{% endraw %}

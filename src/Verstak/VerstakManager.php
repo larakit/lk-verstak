@@ -44,6 +44,7 @@ class VerstakManager {
             $directory      = str_replace($dir . '/', '', $directory);
             self::$blocks[] = $directory;
         }
+        sort(self::$blocks);
     }
     
     static function registerPages() {

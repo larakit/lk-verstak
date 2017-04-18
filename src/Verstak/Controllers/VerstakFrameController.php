@@ -61,8 +61,11 @@ class VerstakFrameController extends Controller {
             }
         }
         foreach(VerstakManager::$themes as $theme) {
-            $url = '/' . VerstakManager::$prefix . '/themes/' . $theme . '.css';
-            $p->css($url);
+            $file_css = public_path(VerstakManager::$prefix . '/themes/' . $theme . '.css');
+            if(file_exists($file_css)) {
+                $url = '/' . VerstakManager::$prefix . '/themes/' . $theme . '.css';
+                $p->css($url);
+            }
         }
         
         $build = public_path(VerstakManager::$prefix . '/staticfiles.php');
@@ -115,8 +118,8 @@ class VerstakFrameController extends Controller {
         return $this
             ->setLayout('lk-verstak::pages.' . $page)
             ->response([
-                'page'  => $page,
-                'theme' => $theme,
+                'page'        => $page,
+                'theme'       => $theme,
             ]);
     }
     

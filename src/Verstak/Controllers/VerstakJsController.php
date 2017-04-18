@@ -17,7 +17,7 @@ class VerstakJsController extends Controller {
             $theme = Arr::first(VerstakManager::$themes);
             $js = str_replace('$scope.theme = \'default\';', '$scope.theme = \'' . $theme . '\';', $js);
         }
-        $js = str_replace('$scope.breakpoints = [];', '$scope.breakpoints = ' . json_encode([0] + VerstakManager::$breakpoints, JSON_PRETTY_PRINT) . ';', $js);
+        $js = str_replace('$scope.breakpoints = [];', '$scope.breakpoints = ' . json_encode(VerstakManager::$breakpoints, JSON_PRETTY_PRINT) . ';', $js);
         $response = \Response::make($js, 200);
         $response->header('Content-Type', 'application/javascript');
         

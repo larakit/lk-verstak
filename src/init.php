@@ -18,8 +18,11 @@ Larakit\Boot::register_command(\Larakit\Verstak\CommandVerstakExample::class);
 \Larakit\Twig::register_function('verstak_block', function ($block_name, $props = []) {
     return view('lk-verstak::blocks.' . $block_name . '.block', $props);
 });
+\Larakit\Twig::register_function('verstak_url', function ($resource) {
+    return '/' . \Larakit\Verstak\VerstakManager::$prefix . '/' . trim($resource);
+});
 
-\Larakit\Twig::register_function('verstak_url', function ($page_name) {
+\Larakit\Twig::register_function('verstak_page_url', function ($page_name) {
     $url = '/verstak/frame-page-' . $page_name . '?theme=' . Request::input('theme') . '&breakpoint=' . Request::input('breakpoint');
     
     return HtmlA::setHref($url);

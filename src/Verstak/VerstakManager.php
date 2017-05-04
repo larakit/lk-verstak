@@ -39,6 +39,7 @@ class VerstakManager {
         if(!file_exists($dir)) {
             mkdir($dir, 0777, true);
         }
+        self::$blocks = [];
         foreach(\File::directories($dir) as $directory) {
             $directory      = str_replace('\\', '/', $directory);
             $directory      = str_replace($dir . '/', '', $directory);
@@ -53,6 +54,7 @@ class VerstakManager {
         if(!file_exists($dir)) {
             mkdir($dir, 0777, true);
         }
+        self::$pages = [];
         foreach(\File::allFiles($dir) as $file) {
             if('twig' == $file->getExtension() && 'file' == $file->getType()) {
                 $page          = $file->getBasename();

@@ -17,7 +17,6 @@
     "require": {
         "larakit/lk-boot": "*",
         "larakit/lk-staticfiles": "*",
-        "larakit/lk-route": "*",
         "larakit/lk-page": "*",
         "larakit/lk-html": "*",
         "larakit/lk-twig": "*",

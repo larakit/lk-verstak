@@ -18,8 +18,6 @@
         "larakit/lk-boot": "*",
         "larakit/lk-staticfiles": "*",
         "larakit/lk-page": "*",
-        "larakit/lk-html": "*",
-        "larakit/lk-twig": "*",
         "snoopy/snoopy": "*",
         "fzaninotto/faker": "*",
         "alchemy/zippy": "^0.3.5"

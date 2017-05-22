@@ -60,6 +60,13 @@ class VerstakFrameController extends Controller {
                 $p->css($url);
             }
         }
+        foreach(VerstakManager::$blocks as $block) {
+            $file_js = public_path(VerstakManager::$prefix . '/blocks/' . $block . '/block.js');
+            if(file_exists($file_js)) {
+                $url = '/' . VerstakManager::$prefix . '/blocks/' . $block . '/block.js';
+                $p->js($url);
+            }
+        }
         foreach(VerstakManager::$themes as $theme) {
             $file_css = public_path(VerstakManager::$prefix . '/themes/' . $theme . '.css');
             if(file_exists($file_css)) {

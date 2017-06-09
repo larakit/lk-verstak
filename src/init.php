@@ -10,6 +10,7 @@ Larakit\Boot::register_command(\Larakit\Verstak\CommandVerstakExample::class);
     ->setSourceDir('public')
     ->addExclude('*')
     ->addInclude('verstak');
+\Larakit\Boot::register_view_path(__DIR__.'/views', 'lk-verstak');
 
 //\Larakit\StaticFiles\Manager::conditions(null, '*', 'verstak*');
 //\Larakit\StaticFiles\Manager::conditions('larakit/sf-angular', 'verstak', []);

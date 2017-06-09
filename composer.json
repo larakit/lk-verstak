@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "larakit/lk-boot": "*",
+        "larakit/lk-twig": "*",
         "larakit/lk-staticfiles": "*",
         "larakit/lk-page": "*",
         "snoopy/snoopy": "*",

@@ -2,6 +2,8 @@
 namespace Larakit\Verstak\Controllers;
 
 use Larakit\Controller;
+use Larakit\Page\LkPage;
+use Larakit\Page\Page;
 use Larakit\Page\PageTheme;
 use Larakit\Verstak\Manager;
 use Larakit\Verstak\VerstakManager;
@@ -97,11 +99,10 @@ class VerstakFrameController extends Controller {
     function frameBlock() {
         $this->initStaticiles();
         $block = \Route::input('block');
-        \LaraPage::body()
-            ->setAttribute('class', '');
+        LkPage::instance()->body()->setAttribute('class', '');
         $theme = \Request::input('theme');
         if($theme) {
-            \LaraPage::body()
+            LkPage::instance()->body()
                 ->addClass('theme--' . $theme);
         }
         

@@ -3,9 +3,6 @@ namespace Larakit\Verstak\Controllers;
 
 use Larakit\Controller;
 use Larakit\Page\LkPage;
-use Larakit\Page\Page;
-use Larakit\Page\PageTheme;
-use Larakit\Verstak\Manager;
 use Larakit\Verstak\VerstakManager;
 
 class VerstakFrameController extends Controller {
@@ -120,7 +117,7 @@ class VerstakFrameController extends Controller {
         $page  = \Route::input('page');
         $theme = \Request::input('theme');
         if($theme) {
-            PageTheme::setCurrent($theme);
+            LkPage::instance()->body()->addClass('theme--'.$theme);
         }
         
         return $this

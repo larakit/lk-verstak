@@ -3,6 +3,7 @@ namespace Larakit\Verstak\Controllers;
 
 use Larakit\Controller;
 use Larakit\Page\LkPage;
+use Larakit\StaticFiles\Css;
 use Larakit\Verstak\VerstakManager;
 
 class VerstakFrameController extends Controller {
@@ -118,6 +119,19 @@ class VerstakFrameController extends Controller {
         $theme = \Request::input('theme');
         if($theme) {
             LkPage::instance()->body()->addClass('theme--'.$theme);
+        }
+        $breakpoint = (int)\Request::input('breakpoint');
+        if($breakpoint) {
+            Css::instance()->addInline('
+.no-scroll::-webkit-scrollbar { width: 0; }
+
+/* ie 10+ */
+.no-scroll{ -ms-overflow-style: none; }
+
+/* фф (свойство больше не работает, других способов тоже нет)*/
+.no-scroll{ overflow: -moz-scrollbars-none; }            
+            ');
+            LkPage::instance()->body()->addClass('no-scroll');
         }
         
         return $this

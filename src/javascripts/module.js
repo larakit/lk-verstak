@@ -11,7 +11,7 @@ angular.module('verstak')
             console.log('keydown -' + keyEvent);
         };
         $scope.frame_url = '';
-        $scope.$watchGroup(['element', 'theme'], function () {
+        $scope.$watchGroup(['element', 'theme', 'breakpoint'], function () {
             if (!$scope.element.name) {
                 return '';
             }
@@ -20,6 +20,7 @@ angular.module('verstak')
             url += '-';
             url += $scope.element.name;
             url += '?theme=' + $scope.theme;
+            url += '&breakpoint=' + $scope.breakpoint;
             $scope.frame_url = url;
             $cookies.put('verstak_element', $scope.element);
             $cookies.put('verstak_theme', $scope.theme);

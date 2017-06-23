@@ -14,7 +14,7 @@ class VerstakController extends Controller {
         LkPage::instance()->body()->setAttribute('ng-keydows', 'keydown');
         \Larakit\StaticFiles\Manager::conditions(null, '*', 'verstak*');
         \Larakit\StaticFiles\Manager::package('larakit/lk-verstak')
-            ->jsPackage('js/angular.js', null, true)
+//            ->jsPackage('js/angular.js', null, true)
             ->js('/verstak/js', null, true);
         
         return $this->response([

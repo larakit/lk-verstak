@@ -3,6 +3,10 @@
 Larakit\Boot::register_boot(__DIR__ . '/boot');
 Larakit\Boot::register_command(\Larakit\Verstak\CommandVerstakExample::class);
 
+\Larakit\StaticFiles\Manager::package('larakit/sf-angular')
+    ->addInclude('verstak');
+\Larakit\StaticFiles\Manager::package('larakit/sf-angular-cookies')
+    ->addInclude('verstak');
 \Larakit\StaticFiles\Manager::package('larakit/lk-verstak')
     ->cssPackage('css/normalize.css')
     ->cssPackage('fonts/uni-sans/uni-sans.css')

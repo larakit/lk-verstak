@@ -1,6 +1,8 @@
-angular.module('verstak', []);
+angular.module('verstak', [
+    'ngCookies'
+]);
 angular.module('verstak')
-    .controller('VerstakCtrl', ['$scope', function ($scope) {
+    .controller('VerstakCtrl', ['$scope', '$cookies', function ($scope, $cookies) {
         /*################################################################################
          # РАБОТА в полноэкранном режиме
          ################################################################################*/
@@ -19,6 +21,8 @@ angular.module('verstak')
             url += $scope.element.name;
             url += '?theme=' + $scope.theme;
             $scope.frame_url = url;
+            $cookies.put('verstak_element', $scope.element);
+            $cookies.put('verstak_theme', $scope.theme);
         });
 
         /*################################################################################
@@ -36,9 +40,11 @@ angular.module('verstak')
             ret.top = $scope.is_show ? 48 : 0;
             return ret;
         };
+        var element_name = $cookies.get('verstak_element_name'),
+            element_type = $cookies.get('verstak_element_type');
         $scope.element = {
-            name: 'index',
-            type: 'page'
+            name: ('undefined' != typeof element_name) ? element_name : 'index',
+            type: ('undefined' != typeof element_type) ? element_type : 'page'
         };
         $scope.pages = [];
         $scope.blocks = [];
@@ -47,16 +53,19 @@ angular.module('verstak')
                 name: name,
                 type: type
             };
+            $cookies.put('verstak_element_name', name);
+            $cookies.put('verstak_element_type', type);
         };
 
         /*################################################################################
          # РАБОТА С ТЕМОЙ ОФОРМЛЕНИЯ
          ################################################################################*/
-        $scope.theme = 'default';
         $scope.setTheme = function (t) {
             $scope.theme = t;
         };
         $scope.themes = [];
+        var theme = $cookies.get('verstak_theme');
+        $scope.theme = ('undefined' != typeof theme) ? theme : 'default';
 
         /*################################################################################
          # РАБОТА С БРЕЙКПОИНТАМИ
@@ -66,7 +75,10 @@ angular.module('verstak')
         };
         $scope.setBreakpoint = function (k) {
             $scope.breakpoint = k;
+            $cookies.put('verstak_breakpoint', $scope.breakpoint);
         };
         $scope.breakpoint = 0;
         $scope.breakpoints = [];
+        var breakpoint = $cookies.get('verstak_breakpoint');
+        $scope.breakpoint = parseInt(('undefined' != typeof breakpoint) ? breakpoint : 0);
     }]);

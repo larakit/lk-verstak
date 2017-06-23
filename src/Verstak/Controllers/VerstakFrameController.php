@@ -4,6 +4,7 @@ namespace Larakit\Verstak\Controllers;
 use Larakit\Controller;
 use Larakit\Page\LkPage;
 use Larakit\StaticFiles\Css;
+use Larakit\StaticFiles\Js;
 use Larakit\Verstak\VerstakManager;
 
 class VerstakFrameController extends Controller {
@@ -120,6 +121,13 @@ class VerstakFrameController extends Controller {
         if($theme) {
             LkPage::instance()->body()->addClass('theme--'.$theme);
         }
+        Js::instance()->addInline('
+        $("a").on("click", function(e){
+            if("#"==$(this).attr("href")){
+                e.preventDefault();
+            }
+        });
+        ');
         $breakpoint = (int)\Request::input('breakpoint');
         if($breakpoint) {
             Css::instance()->addInline('

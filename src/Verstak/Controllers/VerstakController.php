@@ -9,6 +9,9 @@ class VerstakController extends Controller {
     protected $layout = 'lk-verstak::!.layouts.default';
     
     function index() {
+        \Config::set('larakit.lk-staticfiles.js.external.build', false);
+        \Config::set('larakit.lk-staticfiles.js.external.min', false);
+        
         LkPage::instance()->html()->ngApp('verstak');
         LkPage::instance()->body()->setAttribute('ng-controller', 'VerstakCtrl');
         LkPage::instance()->body()->setAttribute('ng-keydows', 'keydown');

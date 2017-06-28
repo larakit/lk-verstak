@@ -96,6 +96,9 @@ class VerstakFrameController extends Controller {
     }
     
     function frameBlock() {
+        \Config::set('larakit.lk-staticfiles.js.external.build', false);
+        \Config::set('larakit.lk-staticfiles.js.external.min', false);
+    
         $this->initStaticiles();
         $block = \Route::input('block');
         LkPage::instance()->body()->setAttribute('class', '');
@@ -113,6 +116,9 @@ class VerstakFrameController extends Controller {
     }
     
     function framePage() {
+        \Config::set('larakit.lk-staticfiles.js.external.build', false);
+        \Config::set('larakit.lk-staticfiles.js.external.min', false);
+    
         $this->initStaticiles();
         //        dd(VerstakManager::blocks());
         \Config::set('app.debug', false);

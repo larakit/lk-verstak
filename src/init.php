@@ -5,6 +5,8 @@ Larakit\Boot::register_command(\Larakit\Verstak\CommandVerstakExample::class);
 
 \Larakit\StaticFiles\Manager::package('larakit/sf-angular')
     ->addInclude('verstak');
+\Larakit\StaticFiles\Manager::package('larakit/sf-jquery')
+    ->addInclude('verstak');
 \Larakit\StaticFiles\Manager::package('larakit/sf-angular-cookies')
     ->addInclude('verstak');
 \Larakit\StaticFiles\Manager::package('larakit/lk-verstak')

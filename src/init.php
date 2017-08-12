@@ -1,5 +1,5 @@
 <?php
-\Larakit\Verstak\VerstakManager::init();
+
 Larakit\Boot::register_boot(__DIR__ . '/boot');
 Larakit\Boot::register_command(\Larakit\Verstak\CommandVerstakExample::class);
 

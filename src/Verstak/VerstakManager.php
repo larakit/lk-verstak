@@ -14,7 +14,6 @@ class VerstakManager {
     }
     
     static function init() {
-        
         self::$prefix      = trim(env('VERSTAK_PREFIX', '!/static'), '/');
         self::$breakpoints = [0] + explode(',', env('VERSTAK_BREAKPOINTS', '1920,1440,1366,1280,1080,1024,900,854,800,768,640,480,360,320'));
         self::$breakpoints = array_unique(self::$breakpoints);

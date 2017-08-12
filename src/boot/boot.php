@@ -3,6 +3,8 @@
 \Route::pattern('block', '.*');
 \Route::pattern('page', '.*');
 
+\Larakit\Verstak\VerstakManager::init();
+
 //****************************************
 //  Главная
 //****************************************

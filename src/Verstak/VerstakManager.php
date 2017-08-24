@@ -39,11 +39,13 @@ class VerstakManager {
         if(!file_exists($dir)) {
             mkdir($dir, 0777, true);
         }
+        $blocks = rglob('*block.twig', 0, $dir);
         self::$blocks = [];
-        foreach(\File::directories($dir) as $directory) {
-            $directory      = str_replace('\\', '/', $directory);
-            $directory      = str_replace($dir . '/', '', $directory);
-            self::$blocks[] = $directory;
+        foreach($blocks as $block) {
+            $block = str_replace('\\', '/', $block);
+            $block = str_replace($dir . '/', '', $block);
+            $block = str_replace('/block.twig', '', $block);
+            self::$blocks[] = $block;
         }
         sort(self::$blocks);
     }

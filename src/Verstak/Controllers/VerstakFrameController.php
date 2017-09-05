@@ -24,6 +24,8 @@ class VerstakFrameController extends Controller {
         foreach(\Larakit\StaticFiles\Manager::packages() as $package => $data) {
             if(!in_array($package, $packages)) {
                 \Larakit\StaticFiles\Manager::conditions($package, '*', 'verstak*');
+            } else {
+                \Larakit\StaticFiles\Manager::conditions($package, '*verstak*');
             }
         }
         $p = \Larakit\StaticFiles\Manager::package('verstak');
